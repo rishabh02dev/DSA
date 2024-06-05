@@ -1,15 +1,16 @@
 class Solution {
+    public int missingNumber(int[] nums) {
+        int sum = 0;
+        int n = nums.length;
 
-    public int missingNumber(int[] arr) {
-        int N = arr.length;
-        int sum = (N * (N + 1)) / 2;
-        int s2 = 0;
-
-        for (int i = 0; i < N; i++) {
-            s2 += arr[i];
+        for(int i=1;i<=n;i++){
+            sum = sum + i;
+        }
+        int sum1 = 0;
+        for(int i=0; i<n;i++){
+            sum1 = sum1+ nums[i];
         }
 
-        int missingNum = sum - s2;
-        return missingNum;
+        return sum-sum1;
     }
 }
