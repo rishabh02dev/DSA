@@ -1,20 +1,26 @@
 class Solution {
-
     public int subarraySum(int[] arr, int k) {
         int n = arr.length;
         Map<Integer, Integer> mpp = new HashMap<>();
-        int preSum = 0, cnt = 0;
+        int presum = 0;
+        int cnt = 0;
 
-        mpp.put(0, 1);
-        for (int i = 0; i < n; i++) {
-            preSum += arr[i];
+        //intially taking presum as 0 and cnt as 1
+        mpp.put(0,1);
+        for(int i=0; i<n;i++){
+            presum+=arr[i];
 
-            int remove = preSum - k;
+            int remove = presum - k;
 
-            cnt += mpp.getOrDefault(remove, 0);
+            if(mpp.containsKey(remove)){
+                cnt+= mpp.get(remove);
+            }
 
-            mpp.put(preSum, mpp.getOrDefault(preSum, 0) + 1);
+            mpp.put(presum, mpp.getOrDefault(presum, 0) + 1);
+            
         }
+
         return cnt;
+
     }
 }
