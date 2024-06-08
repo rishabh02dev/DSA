@@ -1,6 +1,6 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] mat) {
-         List<Integer> ans = new ArrayList<>();
+        List<Integer> ans = new ArrayList<>();
         
         int n = mat.length; // no. of rows
         int m = mat[0].length; // no. of columns
