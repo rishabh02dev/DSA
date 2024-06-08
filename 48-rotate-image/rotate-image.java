@@ -1,20 +1,31 @@
 class Solution {
-    public void rotate(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = i; j < matrix[0].length; j++) {
-                int temp = 0;
-                temp = matrix[i][j];
-                matrix[i][j] = matrix[j][i];
-                matrix[j][i] = temp;
+
+    static void reverse(int arr[]){
+        int left = 0;
+        int right = arr.length-1;
+        while(left<right){
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
+    }
+    public void rotate(int[][] arr) {
+        
+        int n = arr.length;
+        //sbase phle hm transpose karengee
+        for(int i=0; i<n-1;i++){
+            for(int j= i+1;j<n;j++){
+                int temp = arr[i][j];
+                arr[i][j] = arr[j][i];
+                arr[j][i] = temp;
             }
         }
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length / 2; j++) {
-                int temp = 0;
-                temp = matrix[i][j];
-                matrix[i][j] = matrix[i][matrix.length - 1 - j];
-                matrix[i][matrix.length - 1 - j] = temp;
-            }
+        //uppar tak transponse khatam kardiya hmne ab baari hai reverse karne
+
+        for(int i=0;i<n;i++){
+            reverse(arr[i]);
         }
     }
 }
