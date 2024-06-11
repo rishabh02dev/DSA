@@ -6,7 +6,7 @@ class Solution {
         int low= 0;
         int high = n-1;
         while(low<=high){
-            int mid = (low+ (high-low)/2);
+            int mid = low + (high - low) / 2;
 
             if(arr[mid]==target){
                 first = mid;
@@ -29,7 +29,7 @@ class Solution {
         int low= 0;
         int high = n-1;
         while(low<=high){
-            int mid = (low+ (high-low)/2);
+            int mid = low + (high - low) / 2;
 
             if(arr[mid]==target){
                 last = mid;
@@ -47,6 +47,10 @@ class Solution {
         
         int ans[] = new int[2];
         ans[0] = firstOccurence(arr, target);
+        if(ans[0]==-1){
+            ans[1]= -1;
+            return ans;
+        }
         ans[1] = lastOccurence(arr, target);
         return ans;
     }
