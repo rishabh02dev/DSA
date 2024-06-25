@@ -1,40 +1,37 @@
 class Solution {
-    static int noOfDays(int arr[], int value){
-        int day = 1;
-        int load = 0;
-
-        for(int i=0; i<arr.length; i++){
-            if(load+ arr[i]>value){
-                day +=1;
-                load = arr[i];
-            }else{
-                load +=arr[i];
-            }
-        }
-        return day;
-    }
-    public int shipWithinDays(int[] arr, int days) {
-        int n = arr.length;
-        int mini = Integer.MIN_VALUE;
-        int sum = 0;
-        for(int i=0; i<n; i++){
-            mini = Math.max(mini, arr[i]);
-            sum +=arr[i];
+    public int shipWithinDays(int[] weights, int days) {
+        int low = Integer.MIN_VALUE, high = 0;
+        for (int i = 0; i < weights.length; i++) {
+            high += weights[i];
+            low = Math.max(low, weights[i]);
         }
 
-        int low = mini;
-        int high = sum;
-
-        while(low<=high){
-            int mid = low  + (high-low)/2;
-            int numberOfDays = noOfDays(arr, mid);
-            if(numberOfDays<=days){
-                high = mid-1;
-            }
-            else{
-                low = mid+1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int numberOfDays = findDays(weights, mid);
+            if (numberOfDays <= days) {
+                
+                high = mid - 1;
+            } else {
+                
+                low = mid + 1;
             }
         }
         return low;
+    }
+     public static int findDays(int[] weights, int cap) {
+        int days = 1; 
+        int load = 0;
+        int n = weights.length;
+        for (int i = 0; i < n; i++) {
+            if (load + weights[i] > cap) {
+                days += 1; 
+                load = weights[i]; 
+            } else {
+              
+                load += weights[i];
+            }
+        }
+        return days;
     }
 }
