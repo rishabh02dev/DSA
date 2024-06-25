@@ -1,13 +1,4 @@
 class Solution {
-
-    static int sum(int arr[]){
-
-        int sum = 0;
-        for(int i=0; i<arr.length; i++){
-            sum+=arr[i];
-        }
-        return sum;
-    }
     static int noOfDays(int arr[], int value){
         int day = 1;
         int load = 0;
@@ -25,13 +16,14 @@ class Solution {
     public int shipWithinDays(int[] arr, int days) {
         int n = arr.length;
         int mini = Integer.MIN_VALUE;
-
+        int sum = 0;
         for(int i=0; i<n; i++){
             mini = Math.max(mini, arr[i]);
+            sum +=arr[i];
         }
 
         int low = mini;
-        int high = sum(arr);
+        int high = sum;
 
         while(low<=high){
             int mid = low  + (high-low)/2;
