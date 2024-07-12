@@ -1,9 +1,17 @@
 class Solution {
     public int singleNumber(int[] arr) {
-       int xor = 0;
-       for(int i=0;i<arr.length;i++){
-         xor = xor^arr[i];
+       HashMap<Integer,Integer> mpp = new HashMap<>();
+        int ans = 0;
+       for(int num:arr){
+            mpp.put(num, mpp.getOrDefault(num,0)+1);
        }
-        return xor;
+
+       for(int key:mpp.keySet()){
+         if(mpp.get(key)%2==1){
+             ans = key;
+         }
+       }
+
+       return ans;
     }
 }
