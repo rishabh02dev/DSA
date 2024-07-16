@@ -6,21 +6,20 @@ class Solution {
         for(int i=0; i<s.length();i++){
 
             char ch = s.charAt(i);
-            if(ch=='(' || ch=='{' || ch =='['){
-                st.push(ch);
+            if(ch=='('){
+                st.push(')');
+            }
+            else if(ch=='{'){
+                st.push('}');
+            }
+            else if(ch=='['){
+                st.push(']');
+            }
+            else if(st.isEmpty() || st.peek()!=ch){
+                return false;
             }
             else{
-                if(!st.isEmpty()){
-                    char top = st.peek();
-                    if((ch==')' && top=='(') || (ch=='}' && top=='{') || (ch==']' && top=='[')){
-                        st.pop();
-                    }
-                    else{
-                        return false;
-                    }
-                }else{
-                    return false;
-                }
+                st.pop();
             }
         }
 
