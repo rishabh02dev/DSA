@@ -21,7 +21,7 @@ class Solution {
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < ch.length; i++) {
-            if (Character.isLetterOrDigit(ch[i])) {
+            if ((ch[i] >= 'a' && ch[i] <= 'z') || (ch[i] >= '0' && ch[i] <= '9')) {
                 sb.append(ch[i]);
             }
         }
