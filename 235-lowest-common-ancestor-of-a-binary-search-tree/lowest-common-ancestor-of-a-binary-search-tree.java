@@ -15,16 +15,16 @@ class Solution {
     }
 
     static TreeNode findLCA(TreeNode root, TreeNode p, TreeNode q){
-        if(root==null){
-            return null;
-        }
-        
+        if(root==null) return null;
+
         if(root.val>p.val && root.val>q.val){
             return findLCA(root.left, p, q);
         }
-        else if(root.val < p.val && root.val < q.val){
+        else if(root.val<p.val && root.val<q.val){
             return findLCA(root.right, p, q);
         }
-        return root;
+        else{
+            return root;
+        }
     }
 }
