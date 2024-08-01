@@ -1,16 +1,13 @@
 class Solution {
     public int countSeniors(String[] details) {
-        int ans = 0;
-        for (int i = 0; i < details.length; i++) {
-            String res = details[i];
-            
-            // Assuming age is at index 11 and 12 based on previous logic
-            int age = Integer.parseInt(res.substring(11, 13));
-            
-            if (age > 60) { // Checking if age is greater than 60
-                ans++;
+        int seniorCount = 0;
+        for (String info : details) {
+            char tens = info.charAt(11);
+            char ones = info.charAt(12);
+            if (tens > '6' || (tens == '6' && ones > '0')) {
+                seniorCount++;
             }
         }
-        return ans;
+        return seniorCount;
     }
 }
