@@ -1,21 +1,19 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> numMap = new HashMap<>();
+        HashMap<Integer, Integer> mpp = new HashMap<>();
+        int num[] = new int[2];
         int n = nums.length;
-
-        // Build the hash table
-        for (int i = 0; i < n; i++) {
-            numMap.put(nums[i], i);
-        }
-
-        // Find the complement
-        for (int i = 0; i < n; i++) {
-            int complement = target - nums[i];
-            if (numMap.containsKey(complement) && numMap.get(complement) != i) {
-                return new int[]{i, numMap.get(complement)};
+        for(int i=0;i<n;i++){
+            int num1 = nums[i];
+            int diff = target - num1;
+            if(mpp.containsKey(diff)){
+                num[0] = mpp.get(diff);
+                num[1] = i;
+                return num;
             }
+            mpp.put(num1,i);
         }
 
-        return new int[]{}; // No solution found
+        return num;
     }
 }
