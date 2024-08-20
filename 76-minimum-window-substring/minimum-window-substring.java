@@ -5,22 +5,25 @@ class Solution {
         int minLength = Integer.MAX_VALUE;
         int count = 0;
         int starting = -1;
-        int arr[] = new int[128]; // ASCII array to keep track of characters
+        int arr[] = new int[128]; 
 
-        // Fill the array with the frequency of characters in t
         for (int i = 0; i < t.length(); i++) {
             arr[t.charAt(i)]++;
+            //hash array ke andar insert kare hai elements
+            //arr[t.charAt(i)]++
         }
 
         while (right < s.length()) {
             char ch = s.charAt(right);
+            //is right element fetch karliya
             
             if (arr[ch] > 0) {
                 count++;
             }
+            //hash array mai check kar rhe hai ki pos or neg
             
             arr[ch]--;
-            
+            //then reduce krdiya
             
             while (count == t.length()) {
                
